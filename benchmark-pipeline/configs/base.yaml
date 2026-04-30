@@ -1,0 +1,12 @@
+model:
+  name: "Qwen/Qwen2.5-7B-Instruct"
+  temperature: 0.2
+  max_new_tokens: 512
+  do_sample: true
+
+dataset:
+  name: "MathArena/aime_2025"
+
+output:
+  dir: "benchmarks/aime2025/results"
+  file: "raw_generations.jsonl"
