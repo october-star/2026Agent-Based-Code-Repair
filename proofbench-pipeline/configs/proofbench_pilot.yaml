@@ -1,0 +1,36 @@
+project:
+  name: "proofbench-pilot"
+  stage: "step1_scope"
+  description: "Minimal 10-sample ProofBench pilot before full pipeline scaling."
+
+dataset:
+  name: "wenjiema02/ProofBench"
+  split: "train"
+  sample_limit: 10
+  sample_ids: []
+
+goal:
+  task: "generate_lean_verifiable_proofs"
+  proof_language: "Lean"
+
+methods:
+  - id: "direct_lean"
+    enabled: true
+    description: "Problem -> Lean code"
+  - id: "cot_to_lean"
+    enabled: true
+    description: "Problem -> natural language proof -> Lean code"
+  - id: "multi_agent_lean_repair"
+    enabled: true
+    description: "Planning + generation + repair loop with Lean verification"
+
+execution:
+  dry_run: true
+  max_samples_per_run: 10
+
+outputs:
+  root_dir: "outputs"
+  results_file: "results.csv"
+  generations_dir: "generations"
+  lean_files_dir: "lean_files"
+  manifest_file: "scope_manifest.json"

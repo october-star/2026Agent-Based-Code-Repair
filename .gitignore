@@ -4,3 +4,14 @@ __pycache__
 livebench_math
 benchmark-pipeline/configs/livebench_math.yaml
 benchmark-pipeline/scripts/run_livebench_math.sh
+proofbench-pipeline/outputs/*
+!proofbench-pipeline/outputs/.gitkeep
+!proofbench-pipeline/outputs/generations/
+!proofbench-pipeline/outputs/generations/.gitkeep
+!proofbench-pipeline/outputs/lean_files/
+!proofbench-pipeline/outputs/lean_files/.gitkeep
+!proofbench-pipeline/outputs/logs/
+!proofbench-pipeline/outputs/logs/.gitkeep
+/proofbench-pipeline/outputs/generations/*
+/proofbench-pipeline/outputs/lean_files/*
+/proofbench-pipeline/outputs/logs/*

@@ -1,0 +1,16 @@
+You are given a mathematical proof problem and a reference solution.
+
+Your task is to write a Lean proof that matches the statement faithfully.
+
+Requirements:
+- produce Lean code only
+- do not include explanations outside the Lean block
+- avoid `sorry` and `admit`
+
+Problem:
+{{problem}}
+
+Reference solution:
+{{reference_solution}}
+
+Return your answer in a fenced Lean block.

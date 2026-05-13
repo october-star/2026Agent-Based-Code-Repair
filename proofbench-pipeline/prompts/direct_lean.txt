@@ -1,0 +1,12 @@
+You are given a mathematical proof problem.
+
+Write a Lean proof directly.
+
+Requirements:
+- produce Lean code only
+- avoid `sorry` and `admit`
+
+Problem:
+{{problem}}
+
+Return your answer in a fenced Lean block.

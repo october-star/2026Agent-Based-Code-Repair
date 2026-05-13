@@ -1,0 +1,16 @@
+experiment:
+  name: "proofbench-10-sample-pilot"
+  description: "Pilot run for ProofBench Lean-verifiable proof generation."
+  dataset_name: "wenjiema02/ProofBench"
+  dataset_split: "train"
+  dataset_path: "data/samples_10.jsonl"
+  sample_limit: 10
+  outputs_dir: "outputs"
+  methods:
+    - "reference_to_lean"
+    - "cot_then_lean"
+    - "direct_lean"
+    - "mixed_cot_lean"
+  save_generations: true
+  save_lean_files: true
+  save_logs: true

@@ -1,0 +1,15 @@
+model:
+  provider: "local"
+  model_name: "Qwen/Qwen2.5-1.5B-Instruct"
+  temperature: 0.2
+  max_tokens: 256
+  do_sample: false
+  dry_run: false
+  api_key_env: "HF_TOKEN"
+  provider_name: "auto"
+  base_url: ""
+  device: "cpu"
+  torch_dtype: "auto"
+  trust_remote_code: false
+  use_chat_template: true
+  max_input_tokens: 1024

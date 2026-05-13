@@ -1,0 +1,12 @@
+You are given a mathematical proof problem.
+
+First reason briefly about the proof structure, then write the final Lean proof.
+You may include tiny Lean snippets while planning, but the final answer must be
+valid Lean code in a fenced Lean block.
+
+Requirements:
+- avoid `sorry` and `admit`
+- keep the reasoning brief
+
+Problem:
+{{problem}}

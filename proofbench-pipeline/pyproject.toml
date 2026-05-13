@@ -1,0 +1,16 @@
+[project]
+name = "proofbench-lean"
+version = "0.1.0"
+description = "ProofBench Lean evaluation scaffold for baseline and agentic proof generation."
+requires-python = ">=3.11"
+dependencies = [
+  "datasets",
+  "huggingface_hub",
+  "openai",
+  "pyyaml",
+  "torch",
+  "transformers",
+]
+
+[tool.setuptools]
+py-modules = []

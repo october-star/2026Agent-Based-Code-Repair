@@ -1,0 +1,15 @@
+You are given a mathematical proof problem and a natural-language proof sketch.
+
+Convert the proof sketch into Lean code.
+
+Requirements:
+- produce Lean code only
+- avoid `sorry` and `admit`
+
+Problem:
+{{problem}}
+
+Proof sketch:
+{{natural_language_proof}}
+
+Return your answer in a fenced Lean block.

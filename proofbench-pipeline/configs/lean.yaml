@@ -1,0 +1,8 @@
+lean:
+  project_dir: ""
+  command:
+    - "lake"
+    - "env"
+    - "lean"
+  timeout: 30
+  fail_on_sorry: true
