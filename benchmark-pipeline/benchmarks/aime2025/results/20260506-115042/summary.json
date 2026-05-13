@@ -1,0 +1,17 @@
+{
+  "accuracy": 0.1,
+  "parse_failure_rate": 0.9,
+  "parsed_rate": 0.1,
+  "total": 10,
+  "correct": 1,
+  "parse_failures": 9,
+  "model_name": "google/gemma-4-31B-it",
+  "model_slug": "google__gemma-4-31B-it",
+  "run_id": "20260506-115042",
+  "provider": "hf_inference",
+  "dataset_name": "MathArena/aime_2025",
+  "dataset_split": "train",
+  "max_examples": 10,
+  "tool_use": "disabled",
+  "type_Number Theory": 1.0
+}

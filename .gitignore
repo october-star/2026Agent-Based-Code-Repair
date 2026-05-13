@@ -1,3 +1,6 @@
 __pycache__
 .venv
 .env
+livebench_math
+benchmark-pipeline/configs/livebench_math.yaml
+benchmark-pipeline/scripts/run_livebench_math.sh

@@ -8,48 +8,33 @@
 #SBATCH --partition=gpu
 #SBATCH --gpus=1
 #SBATCH --account=gratis
-#SBATCH --output=%x-%j.out
-#SBATCH --error=%x-%j.err
-
-# Notes for UBELIX accounts/QOS:
-# - gratis/free-tier GPU jobs may need:   #SBATCH --qos=job_gpu_preemptable
-# - paygo jobs need:                      #SBATCH --wckey=<your-project>
-# - invest GPU jobs usually use:          #SBATCH --partition=gpu-invest
-#                                         #SBATCH --qos=job_gpu_<investor>
+#SBATCH --output=slurm-%j.out
+#SBATCH --error=slurm-%j.err
 
 set -euo pipefail
 
-echo "Started at: $(date)"
-echo "Job ID: ${SLURM_JOB_ID}"
-echo "Node: ${SLURMD_NODENAME:-unknown}"
-echo "Submit dir: ${SLURM_SUBMIT_DIR}"
-
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PIPELINE_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
-REPO_ROOT="$(cd "${PIPELINE_DIR}/.." && pwd)"
+REPO_ROOT="${REPO_ROOT:-/Users/octobercity/Desktop/project/2026Agent-Based-Code-Repair}"
+PIPELINE_DIR="${PIPELINE_DIR:-${REPO_ROOT}/benchmark-pipeline}"
+VENV_DIR="${VENV_DIR:-${REPO_ROOT}/.venv-ubelix}"
+LOG_DIR="${LOG_DIR:-${REPO_ROOT}/logs}"
+HF_HOME="${HF_HOME:-${HOME}/.cache/huggingface}"
 
 module load Anaconda3
-
-VENV_DIR="${VENV_DIR:-${REPO_ROOT}/.venv-ubelix}"
-HF_HOME="${HF_HOME:-${HOME}/.cache/huggingface}"
+source "${VENV_DIR}/bin/activate"
 
 export HF_HOME
 export TRANSFORMERS_CACHE="${TRANSFORMERS_CACHE:-${HF_HOME}/transformers}"
 export HF_DATASETS_CACHE="${HF_DATASETS_CACHE:-${HF_HOME}/datasets}"
 export PYTHONUNBUFFERED=1
 
-if [[ ! -d "${VENV_DIR}" ]]; then
-  echo "Creating virtual environment at ${VENV_DIR}"
-  python3 -m venv "${VENV_DIR}"
-fi
+exec > >(tee -a "${LOG_DIR}/ubelix-aime-${SLURM_JOB_ID}.log") 2>&1
 
-source "${VENV_DIR}/bin/activate"
-
-python -m pip install --upgrade pip
-python -m pip install -r "${REPO_ROOT}/requirements.txt"
-
-echo "Python: $(which python)"
-python --version
+echo "Started at: $(date)"
+echo "Job ID: ${SLURM_JOB_ID}"
+echo "Node: ${SLURMD_NODENAME:-unknown}"
+echo "Repo root: ${REPO_ROOT}"
+echo "Venv: ${VENV_DIR}"
+echo "HF cache: ${HF_HOME}"
 
 cd "${REPO_ROOT}"
 srun bash "${PIPELINE_DIR}/scripts/run_aime.sh"

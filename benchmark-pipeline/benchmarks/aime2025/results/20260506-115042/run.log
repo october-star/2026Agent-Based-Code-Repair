@@ -1,0 +1,239 @@
+[sample 0] problem_type=['Number Theory']
+[sample 0] gold=70
+[sample 0] parsed_answer=70 parse_failed=False
+[sample 0] model_output=To find all integer bases $b > 9$ such that $17_b$ is a divisor of $97_b$, we first convert the numbers from base $b$ to base 10:
+$17_b = 1 \cdot b + 7 = b + 7$
+$97_b = 9 \cdot b + 7 = 9b + 7$
+
+The condition is that $(b+7)$ must divide $(9b+7)$. We can express the division as:
+$\frac{9b + 7}{b + 7} = \frac{9(b + 7) - 63 + 7}{b + 7} = \frac{9(b + 7) - 56}{b + 7} = 9 - \frac{56}{b + 7}$
+
+For $17_b$ to be a divisor of $97_b$, the term $\frac{56}{b + 7}$ must be an integer. This means $(b+7)$ must be a divisor of 56.
+The divisors of 56 are: 1, 2, 4, 7, 8, 14, 28, 56.
+
+We are given the constraint $b > 9$, which implies $b + 7 > 16$.
+Looking at the list of divisors, the possible values for $b+7$ are:
+1. $b+7 = 28 \implies b = 21$
+2. $b+7 = 56 \implies b = 49$
+
+We check if these values of $b$ satisfy $b > 9$:
+For $b=21$, $21 > 9$ (True).
+For $b=49$, $49 > 9$ (True).
+
+The sum of all such integer bases $b$ is $21 + 49 = 70$.
+
+FINAL_ANSWER: 70
+--------------------------------------------------------------------------------
+[sample 1] problem_type=['Geometry']
+[sample 1] gold=588
+[sample 1] parsed_answer=None parse_failed=True
+[sample 1] model_output=Let the side lengths of $\triangle ABC$ be $AB = 4+16+8 = 28$ and $AC = 13+52+26 = 91$.
+Let $\theta = \angle A$. The area of $\triangle ADE$ is $\frac{1}{2}(4+16)(13) \sin \theta = 130 \sin \theta$ is wrong; wait, $D, E$ are on $AB$.
+Let's use ratios. Area $[ABC] = S$.
+$[ADF] = \frac{AD}{AB} \cdot \frac{AF}{AC} S = \frac{4}{28} \cdot \frac{13}{91} S = \frac{1}{7} \cdot \frac{1}{7} S = \frac{1}{49} S$.
+$[AEG] = \frac{AE}{AB} \cdot \frac{AG}{AC} S = \frac{20}{28} \cdot \frac{65}{91} S = \frac{5}{7} \cdot \frac{5}{7} S = \frac{25}{49} S$.
+The area of quad $DEGF = [AEG] - [ADF] = \frac{25-1}{49} S = \frac{24}{49} S$.
+Given $[DEGF] = 288$, then $\frac{24}{49} S = 288 \implies S = \frac{288 \cdot 49}{24} = 12 \cdot 49 = 588$.
+
+We want the area of heptagon $AFNBCEM$. The vertices are points on or relative to $\triangle ABC$.
+Actually, it's easier to calculate the area of $\triangle ABC$ and subtract/add the specific regions.
+The heptagon is formed by $A, F, N, B, C, E, M$.
+Notice that $M$ is the reflection of $D$ through $F$. Area $[AFM] = [ADF]$ because they share the same altitude from $A$ to line $DM$ and base $DF = FM$.
+$[AFM] = \frac{1}{49} S = \frac{58
+--------------------------------------------------------------------------------
+[sample 2] problem_type=['Combinatorics']
+[sample 2] gold=16
+[sample 2] parsed_answer=None parse_failed=True
+[sample 2] model_output=To find the number of assignments $N$, let $c$, $v$, and $s$ be the number of players who chose chocolate, vanilla, and strawberry ice cream, respectively.
+
+We are given:
+1. $c + v + s = 9$
+2. $c > v > s \ge 1$
+
+We list the possible integer partitions of 9 that satisfy these conditions:
+- If $s = 1$, then $c + v = 8$. Since $c > v > 1$, the possibilities are:
+    - $v = 2, c = 6$
+    - $v = 3, c = 5$
+- If $s \ge 2$, the smallest values would be $s=2, v=3, c=4$. Check the sum: $2+3+4 = 9$. This works.
+- If $s \ge 3$, the smallest values would be $s=3, v=4, c=5$, but $3+4+5 = 12 > 9$.
+
+The possible distributions of quantities $(c, v, s)$ are:
+1. $(6, 2, 1)$
+2. $(5, 3, 1)$
+3. $(4, 3, 2)$
+
+For each distribution, we calculate the number of ways to assign these flavors to the 9 distinct players using the multinomial coefficient $\frac{n!}{c!v!s!}$:
+
+1. For $(6, 2, 1)$:
+   $\frac{9!}{6!2!1!} = \frac{9 \cdot 8 \cdot 7}{2 \cdot 1} = 9 \cdot 4 \cdot 7 = 252$
+
+2. For $(5, 3, 1)$:
+   $\frac{9!}{5!3!1!} = \frac{9 \cdot 8 \cdot 7 \cdot 6}{3 \cdot 2 \cdot 1} = 9 \cdot 8 \cdot 7 = 504$
+
+3. For $(4, 3, 2)$:
+   $\frac{9!}{4!3!2!} = \frac{9 \cdot 8 \cdot 7 \cdot 6 \cdot 5}{(3 \cdot 2 \cdot 1
+--------------------------------------------------------------------------------
+[sample 3] problem_type=['Algebra']
+[sample 3] gold=117
+[sample 3] parsed_answer=None parse_failed=True
+[sample 3] model_output=To find the number of ordered pairs $(x, y)$ with $-100 \le x, y \le 100$ such that $12x^2 - xy - 6y^2 = 0$, we first factor the quadratic equation.
+
+The equation is $12x^2 - xy - 6y^2 = 0$. We look for factors of $(12)(-6) = -72$ that sum to $-1$. These are $-9$ and $8$.
+$12x^2 - 9xy + 8xy - 6y^2 = 0$
+$3x(4x - 3y) + 2y(4x - 3y) = 0$
+$(3x + 2y)(4x - 3y) = 0$
+
+This gives us two cases:
+1. $3x + 2y = 0 \implies 3x = -2y$
+2. $4x - 3y = 0 \implies 4x = 3y$
+
+**Case 1: $3x = -2y$**
+For $x$ and $y$ to be integers, $x$ must be a multiple of 2, and $y$ must be a multiple of 3.
+Let $x = 2k$ and $y = -3k$ for some integer $k$.
+We require $-100 \le 2k \le 100 \implies -50 \le k \le 50$
+And $-100 \le -3k \le 100 \implies -33 \frac{1}{3} \le k \le 33 \frac{1}{3}$
+The range for $k$ is the intersection: $-33 \le k \le 33$.
+There are $33 - (-33) + 1 = 67$ such pairs.
+
+**Case 2: $4x = 3y$**
+For $x$ and $y$ to be integers, $x$ must be a multiple of 3, and $y$ must be a multiple of 4.
+Let $x = 3m$ and $y = 4m$ for some integer $m$.
+We require $-100 \
+--------------------------------------------------------------------------------
+[sample 4] problem_type=['Combinatorics', 'Number Theory']
+[sample 4] gold=279
+[sample 4] parsed_answer=None parse_failed=True
+[sample 4] model_output=To find the number of eight-digit integers $N$ using digits $\{1, 2, \dots, 8\}$ that are divisible by $22$, the number must be divisible by both 2 and 11.
+
+1. **Divisibility by 2**: The last digit must be even ($2, 4, 6, 8$).
+2. **Divisibility by 11**: Let $S_1$ be the sum of digits in odd positions and $S_2$ be the sum of digits in even positions.
+   $S_1 + S_2 = 1 + 2 + \dots + 8 = 36$.
+   The condition for divisibility by 11 is $S_1 - S_2 = 11k$.
+   Since $S_1 + S_2 = 36$ and $S_1 - S_2$ must be even (as their sum is even), $k$ must be even.
+   Possible values for $S_1 - S_2$ are $0, 22, -22$.
+   - If $S_1 - S_2 = 0$, then $S_1 = S_2 = 18$.
+   - If $S_1 - S_2 = 22$, then $S_1 = 29$ and $S_2 = 7$.
+   - If $S_1 - S_2 = -22$, then $S_1 = 7$ and $S_2 = 29$.
+
+**Case 1: $S_1 = S_2 = 18$**
+We need to find the number of subsets of size 4 from $\{1, \dots, 8\}$ that sum to 18.
+The pairs $(a, b, c, d)$ summing to 18 are:
+- $\{8, 7, 2, 1\}$
+- $\{8, 6, 3, 1\}$
+- $\{8, 5, 4, 1\}$
+- $\{8, 5, 3, 2\}$
+- $\{7, 6, 4, 1\}$
+- $\{7, 6, 3, 2\}$
+- $\{7, 5, 4, 2\}$
+- $\{
+--------------------------------------------------------------------------------
+[sample 5] problem_type=['Geometry']
+[sample 5] gold=504
+[sample 5] parsed_answer=None parse_failed=True
+[sample 5] model_output=Let the parallel sides of the isosceles trapezoid be $r$ and $s$, and the height be $h$.
+The radius of the inscribed circle is $3$, so the height $h$ of the trapezoid is $2 \times 3 = 6$.
+The area of the trapezoid is given by:
+$\text{Area} = \frac{r+s}{2} \cdot h = 72$
+$\frac{r+s}{2} \cdot 6 = 72 \implies 3(r+s) = 72 \implies r+s = 24$.
+
+A quadrilateral has an inscribed circle (is a tangential quadrilateral) if and only if the sums of its opposite sides are equal.
+Let $c$ be the length of the two equal non-parallel sides.
+$r+s = c+c = 2c$
+$24 = 2c \implies c = 12$.
+
+Now, consider the right triangle formed by the height $h$, the side $c$, and the segment on the base $\frac{|r-s|}{2}$.
+By the Pythagorean theorem:
+$h^2 + \left(\frac{r-s}{2}\right)^2 = c^2$
+$6^2 + \left(\frac{r-s}{2}\right)^2 = 12^2$
+$36 + \frac{(r-s)^2}{4} = 144$
+$\frac{(r-s)^2}{4} = 108$
+$(r-s)^2 = 432$.
+
+We want to find $r^2 + s^2$. We know:
+$(r+s)^2 = r^2 + s^2 + 2rs$
+$(r-s)^2 = r^2 + s^2 - 2rs$
+Adding these two equations:
+$(r+s)^2 + (r-s)^2 = 2(r^2 + s^2)$
+$24^2 + 432 = 2(r^2 + s^2)$
+$576 + 432 = 2(r^2 + s^2)$
+$1008 = 2(r^2 + s^2)$
+$r^2 + s^2
+--------------------------------------------------------------------------------
+[sample 6] problem_type=['Combinatorics']
+[sample 6] gold=821
+[sample 6] parsed_answer=None parse_failed=True
+[sample 6] model_output=To find the probability that the last word listed contains $G$, let's analyze the process.
+The twelve letters are grouped into six pairs. Each pair is ordered alphabetically. Then the six words are ordered alphabetically.
+The last word is the one whose first letter is the largest among all the first letters of the six words.
+Let the pairs be $\{x_1, y_1\}, \{x_2, y_2\}, \dots, \{x_6, y_6\}$ with $x_i < y_i$.
+The words are $W_i = x_i y_i$. We sort $W_i$ such that $x_{(1)} < x_{(2)} < \dots < x_{(6)}$.
+The last word is $W_{(6)} = x_{(6)} y_{(6)}$.
+The condition that the last word contains $G$ means either $x_{(6)} = G$ or $y_{(6)} = G$.
+
+Since $x_{(6)}$ is the maximum of the first letters, $x_{(6)}$ is the largest possible value such that there are still letters available to be paired with $x_{(1)} \dots x_{(5)}$.
+Specifically, $x_{(6)}$ is the letter such that exactly one letter from the set $\{L, K, J, I, H, G, \dots\}$ is $y_{(6)}$ and the rest are $x_i$'s.
+More simply, the last word $W_{(6)}$ is determined by the pairing. Let the letters be $1, 2, \dots, 12$ (A=1, ..., L=12).
+The letters $x_1, \dots, x_6$ are the minimums of the pairs. $x_{(6)}$ is the maximum of these minimums.
+The letters that can actually be the first letter of a word are those that are not the larger element in every pair they could belong to.
+Actually, $x_{(6)}$ is the letter such that among the letters $\{x_{(6)}, x_{(6)}+1, \dots, 12\}$, there is at least one pair.
+Wait, the simplest way: The last word starts with $x_{(6)}$. For any set of 6 pairs, $x_{(6)}$ is the unique letter such that exactly one letter in $\{x_{(6)}, \dots, 12\}$ is paired with a letter
+--------------------------------------------------------------------------------
+[sample 7] problem_type=['Algebra']
+[sample 7] gold=77
+[sample 7] parsed_answer=None parse_failed=True
+[sample 7] model_output=The first equation $|z - (25+20i)| = 5$ represents a circle in the complex plane centered at $C = (25, 20)$ with radius $r = 5$.
+
+The second equation $|z - (4+k)| = |z - (3i+k)|$ represents the perpendicular bisector of the segment connecting the points $A = (4+k, 0)$ and $B = (k, 3)$.
+The midpoint of $AB$ is $M = (\frac{4+2k}{2}, \frac{3}{2}) = (2+k, 1.5)$.
+The slope of $AB$ is $m_{AB} = \frac{3-0}{k-(4+k)} = \frac{3}{-4} = -3/4$.
+The slope of the perpendicular bisector is $m_{\perp} = 4/3$.
+The equation of the line is $y - 1.5 = \frac{4}{3}(x - (2+k))$, which simplifies to:
+$y = \frac{4}{3}x - \frac{8+4k}{3} + \frac{4.5}{3} = \frac{4}{3}x - \frac{3.5+4k}{3}$.
+Rearranging to general form $Ax + By + C = 0$:
+$4x - 3y - (3.5+4k) = 0$, or $4x - 3y - 3.5 - 4k = 0$.
+
+For the system to have exactly one solution, the line must be tangent to the circle. The distance from the center $(25, 20)$ to the line must equal the radius $r=5$.
+Distance $d = \frac{|4(25) - 3(20) - (3.5 + 4k)|}{\sqrt{4^2 + (-3)^2}} = 5$.
+$\frac{|100 - 60 - 3.5 - 4k|}{5} = 5$
+$|36.5 - 4k| = 25$.
+
+This gives two possible equations:
+1) $36.5 - 4k = 25 \implies 4k = 1
+--------------------------------------------------------------------------------
+[sample 8] problem_type=['Algebra']
+[sample 8] gold=62
+[sample 8] parsed_answer=None parse_failed=True
+[sample 8] model_output=To find the intersection, let $(x, y)$ be a point on the original parabola $y = x^2 - 4$. The point $(x', y')$ on the rotated parabola is obtained by rotating $(x, y)$ by $60^\circ$:
+$x' = x \cos 60^\circ - y \sin 60^\circ = \frac{x - y\sqrt{3}}{2}$
+$y' = x \sin 60^\circ + y \cos 60^\circ = \frac{x\sqrt{3} + y}{2}$
+Since the image is also a parabola, the original parabola and its image intersect at $(x, y)$ if $(x, y)$ is the image of some point $(u, v)$ on the original parabola. However, it is easier to rotate the system back. A point $(x, y)$ is on the rotated parabola if rotating $(x, y)$ by $-60^\circ$ yields a point $(u, v)$ such that $v = u^2 - 4$.
+$u = x \cos(-60^\circ) - y \sin(-60^\circ) = \frac{x + y\sqrt{3}}{2}$
+$v = x \sin(-60^\circ) + y \cos(-60^\circ) = \frac{-x\sqrt{3} + y}{2}$
+So, $\frac{y - x\sqrt{3}}{2} = (\frac{x + y\sqrt{3}}{2})^2 - 4$.
+We also have $y = x^2 - 4$, so $x^2 = y + 4$.
+The rotation equation is $2y - 2x\sqrt{3} = x^2 + 2xy\sqrt{3} + 3y^2 - 16$.
+Substitute $x^2 = y + 4$:
+$2y - 2x\sqrt{3} = y + 4 + 2xy\sqrt{3} + 3y^2 - 16$
+$y - 3y^2 + 12 = 2x\sqrt{3}(1 + y)$
+Squaring both sides: $(y - 3y^2 + 12)^2 = 12x^2(1+y
+--------------------------------------------------------------------------------
+[sample 9] problem_type=['Combinatorics']
+[sample 9] gold=81
+[sample 9] parsed_answer=None parse_failed=True
+[sample 9] model_output=To find the number of ways to fill a $3 \times 9$ grid such that each row contains numbers $1-9$ and each $3 \times 3$ block contains numbers $1-9$, we analyze the structure.
+
+Let the grid be divided into three $3 \times 3$ blocks $B_1, B_2, B_3$.
+Each $B_i$ must contain a permutation of $\{1, \dots, 9\}$.
+Let the rows be $R_1, R_2, R_3$.
+In $B_1$, there are $9!$ ways to fill the cells. This fixes the set of elements in each column of $B_1$.
+Let the elements of the $j$-th column of $B_1$ be $C_{1j} = \{x_{1j}, x_{2j}, x_{3j}\}$.
+For $B_2$, the elements in column $j$ of $B_2$ must be a permutation of $\{1, \dots, 9\} \setminus C_{1j}$ if we only considered rows, but we must satisfy both row and block constraints.
+Specifically, let the rows of $B_1$ be $r_{11}, r_{12}, r_{13}$, the rows of $B_2$ be $r_{21}, r_{22}, r_{23}$, and the rows of $B_3$ be $r_{31}, r_{32}, r_{33}$.
+Each $r_{ij}$ is a 3-element set.
+For $B_1$, there are $9!$ ways to arrange the numbers.
+To satisfy the row constraint, $r_{11} \cup r_{21} \cup r_{31} = \{1, \dots, 9\}$.
+To satisfy the block constraint, $r_{11} \cup r_{12} \cup r_{13} = \{1, \dots, 9\}$.
+This is equivalent to counting the number of ways to partition $\{1, \dots, 9\}$ into 3 sets of 3 (the rows of $B_1$), then for $B_2$ and $B_3$, choosing permutations that satisfy the constraints.
+
+Alternatively, consider the $3 \times 3$ blocks. Let the elements
+--------------------------------------------------------------------------------

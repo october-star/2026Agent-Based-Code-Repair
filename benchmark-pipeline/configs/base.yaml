@@ -1,12 +1,24 @@
 model:
-  name: "Qwen/Qwen2.5-7B-Instruct"
+  name: "google/gemma-4-31B-it"
+  provider: "hf_inference"
+  provider_name: "auto"
+  device: "auto"
   temperature: 0.2
   max_new_tokens: 512
-  do_sample: true
+  max_input_tokens: 1024
+  do_sample: false
+  auth_token_env: "HF_TOKEN"
+  timeout: 120
 
 dataset:
   name: "MathArena/aime_2025"
+  split: "train"
+  max_examples: 10
 
 output:
   dir: "benchmarks/aime2025/results"
   file: "raw_generations.jsonl"
+  summary_file: "summary.json"
+  log_file: "run.log"
+  overwrite: true
+  print_logs: true
