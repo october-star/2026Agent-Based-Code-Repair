@@ -1,6 +1,6 @@
 model:
   provider: "local"
-  model_name: "Qwen/Qwen2.5-1.5B-Instruct"
+  model_name: "Qwen/Qwen2.5-Coder-7B-Instruct"
   temperature: 0.2
   max_tokens: 512
   do_sample: false

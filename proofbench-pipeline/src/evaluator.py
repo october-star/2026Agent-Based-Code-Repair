@@ -7,12 +7,22 @@ from pathlib import Path
 RESULT_COLUMNS = [
     "sample_id",
     "method",
+    "strategy_name",
+    "backend_method",
+    "agent_mode",
+    "repair_iterations",
     "problem",
     "reference_solution",
+    "final_answer_text",
     "raw_generation",
+    "intermediate_generation",
+    "repair_generation",
+    "lean4_repair_generation",
     "lean_code",
     "lean_success",
+    "returncode",
     "error_type",
+    "stdout",
     "stderr",
     "uses_sorry",
     "runtime_sec",
@@ -43,10 +53,10 @@ def write_jsonl(records, path):
 def summarize_by_method(records):
     grouped = defaultdict(list)
     for record in records:
-        grouped[record["method"]].append(record)
+        grouped[(record["method"], record.get("agent_mode", ""))].append(record)
 
     summary = []
-    for method, items in grouped.items():
+    for (method, agent_mode), items in grouped.items():
         total = len(items)
         if total == 0:
             continue
@@ -61,10 +71,12 @@ def summarize_by_method(records):
         summary.append(
             {
                 "method": method,
+                "agent_mode": agent_mode,
                 "pass_at_1": success_count / total,
                 "compile_rate": success_count / total,
                 "no_sorry_rate": no_sorry_count / total,
                 "extraction_success_rate": extraction_success / total,
+                "avg_repairs": sum(item.get("repair_iterations", 0) for item in items) / total,
                 "main_error": main_error,
             }
         )

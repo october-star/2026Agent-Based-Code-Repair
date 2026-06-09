@@ -1,12 +1,19 @@
 You are given a mathematical proof problem.
 
-First reason briefly about the proof structure, then write the final Lean proof.
-You may include tiny Lean snippets while planning, but the final answer must be
-valid Lean code in a fenced Lean block.
+Think briefly about the proof structure, but do not print that reasoning.
+Your visible answer must be only the final Lean 4 proof in exactly one fenced
+Lean block.
 
 Requirements:
 - avoid `sorry` and `admit`
-- keep the reasoning brief
+- do not include any prose outside the fenced Lean block
+- keep the theorem statement faithful to the problem
+- prefer a minimal compilable theorem/proof skeleton over long informal text
+- do not write comments like "Welcome to the Lean theorem prover"
+- do not invent placeholder definitions, fake inductive types, or unfinished lemmas
+- do not use Lean 3 style imports such as `import data.int.basic` or `import tactic`
 
 Problem:
 {{problem}}
+
+Return your answer in a fenced Lean block.

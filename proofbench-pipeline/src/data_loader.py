@@ -8,7 +8,10 @@ class ProofBenchSample:
     sample_id: str
     problem: str
     reference_solution: str = ""
+    formal_statement: str = ""
     source: str = ""
+    benchmark: str = ""
+    split_name: str = ""
     generator: str = ""
     model_solution: str = ""
     expert_rating: int | None = None
@@ -21,19 +24,41 @@ class ProofBenchSample:
 def _normalize_sample(raw, index):
     metadata = raw.get("metadata") or {}
     sample_id = raw.get("sample_id") or raw.get("problem_id") or raw.get("id") or f"sample-{index}"
-    problem = raw.get("problem") or raw.get("question") or raw.get("prompt") or ""
+    problem = (
+        raw.get("problem")
+        or raw.get("question")
+        or raw.get("prompt")
+        or raw.get("informal_statement")
+        or raw.get("informal_stmt")
+        or raw.get("statement")
+        or raw.get("nl_statement")
+        or raw.get("theorem")
+        or ""
+    )
     reference_solution = (
         raw.get("reference_solution")
         or raw.get("reference")
         or raw.get("solution")
+        or raw.get("proof")
+        or raw.get("reference_proof")
+        or raw.get("informal_proof")
         or ""
     )
-    source = raw.get("source") or raw.get("competition") or metadata.get("contest") or ""
+    source = (
+        raw.get("source")
+        or raw.get("competition")
+        or raw.get("benchmark")
+        or metadata.get("contest")
+        or ""
+    )
     return ProofBenchSample(
         sample_id=sample_id,
         problem=problem.strip(),
         reference_solution=reference_solution.strip(),
+        formal_statement=(raw.get("formal_statement") or raw.get("lean_statement") or "").strip(),
         source=source.strip(),
+        benchmark=(raw.get("benchmark") or "").strip(),
+        split_name=(raw.get("split") or "").strip(),
         generator=(raw.get("generator") or "").strip(),
         model_solution=(raw.get("model_solution") or "").strip(),
         expert_rating=raw.get("expert_rating"),
@@ -83,7 +108,10 @@ def build_sample_records(samples):
                 "sample_id": sample.sample_id,
                 "problem": sample.problem,
                 "reference_solution": sample.reference_solution,
+                "formal_statement": sample.formal_statement,
                 "source": sample.source,
+                "benchmark": sample.benchmark,
+                "split": sample.split_name,
                 "generator": sample.generator,
                 "model_solution": sample.model_solution,
                 "expert_rating": sample.expert_rating,

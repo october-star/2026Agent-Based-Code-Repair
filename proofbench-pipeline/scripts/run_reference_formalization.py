@@ -15,7 +15,7 @@ def main():
     experiment_path = Path(
         os.getenv(
             "PROOFBENCH_EXPERIMENT_CONFIG",
-            base_dir / "configs" / "experiments" / "minif2f_pilot.yaml",
+            base_dir / "configs" / "experiments" / "minif2f_reference_formalization.yaml",
         )
     )
     model_path = Path(os.getenv("PROOFBENCH_MODEL_CONFIG", base_dir / "configs" / "model.yaml"))
@@ -26,7 +26,7 @@ def main():
         model_path=model_path,
         lean_path=lean_path,
     )
-    result = pipeline.run(sample_limit=10)
+    result = pipeline.run(sample_limit=None)
     for row in result["summary"]:
         print(row)
 

@@ -1,0 +1,18 @@
+experiment:
+  name: "minif2f-test-pilot-no-agent"
+  description: "10-sample miniF2F-test pilot without the repair loop."
+  benchmark: "miniF2F-test"
+  dataset_name: "miniF2F-test"
+  dataset_split: "test"
+  dataset_path: "data/minif2f/pilot_10.jsonl"
+  references_dir: "references/minif2f/lean_ground_truth"
+  sample_limit: 10
+  agent_mode: "no_agent"
+  outputs_dir: "outputs/minif2f/pilot/no_agent"
+  methods:
+    - "cot_to_lean"
+    - "direct_lean"
+    - "interleaved"
+  save_generations: true
+  save_lean_files: true
+  save_logs: true

@@ -13,7 +13,10 @@ from pipeline import ProofBenchPipeline
 def main():
     base_dir = REPO_ROOT / "proofbench-pipeline"
     experiment_path = Path(
-        os.getenv("PROOFBENCH_EXPERIMENT_CONFIG", base_dir / "configs" / "experiment.yaml")
+        os.getenv(
+            "PROOFBENCH_EXPERIMENT_CONFIG",
+            base_dir / "configs" / "experiments" / "minif2f_full.yaml",
+        )
     )
     model_path = Path(os.getenv("PROOFBENCH_MODEL_CONFIG", base_dir / "configs" / "model.yaml"))
     lean_path = Path(os.getenv("PROOFBENCH_LEAN_CONFIG", base_dir / "configs" / "lean.yaml"))

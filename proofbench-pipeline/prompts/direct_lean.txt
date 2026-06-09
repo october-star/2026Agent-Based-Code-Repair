@@ -1,10 +1,15 @@
 You are given a mathematical proof problem.
 
-Write a Lean proof directly.
+Write Lean 4 code directly.
 
 Requirements:
-- produce Lean code only
+- produce Lean 4 code only
+- output exactly one fenced Lean block and nothing else
 - avoid `sorry` and `admit`
+- do not write comments like "Welcome to the Lean theorem prover"
+- do not invent placeholder definitions, fake inductive types, or unfinished lemmas
+- do not use Lean 3 style imports such as `import data.int.basic` or `import tactic`
+- if a full formalization is too hard, return the smallest faithful Lean 4 theorem/proof skeleton you can
 
 Problem:
 {{problem}}

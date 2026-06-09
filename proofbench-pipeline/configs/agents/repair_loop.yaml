@@ -1,0 +1,3 @@
+agent:
+  mode: "repair_loop"
+  description: "Enable extraction repair and Lean4 repair after compiler feedback."

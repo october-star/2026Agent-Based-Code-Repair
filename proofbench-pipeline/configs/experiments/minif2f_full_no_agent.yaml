@@ -1,0 +1,18 @@
+experiment:
+  name: "minif2f-test-full-no-agent"
+  description: "Full miniF2F-test run without the repair loop."
+  benchmark: "miniF2F-test"
+  dataset_name: "miniF2F-test"
+  dataset_split: "test"
+  dataset_path: "data/minif2f/test.jsonl"
+  references_dir: "references/minif2f/lean_ground_truth"
+  sample_limit: null
+  agent_mode: "no_agent"
+  outputs_dir: "outputs/minif2f/full/no_agent"
+  methods:
+    - "cot_to_lean"
+    - "direct_lean"
+    - "interleaved"
+  save_generations: true
+  save_lean_files: true
+  save_logs: true

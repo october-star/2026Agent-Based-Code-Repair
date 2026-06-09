@@ -1,0 +1,6 @@
+dataset:
+  name: "miniF2F-test"
+  split: "test"
+  pilot_path: "data/minif2f/pilot_10.jsonl"
+  full_path: "data/minif2f/test.jsonl"
+  references_dir: "references/minif2f/lean_ground_truth"
