@@ -1,0 +1,4 @@
+strategy:
+  id: "reference_formalization"
+  backend_method: "reference_to_lean"
+  description: "Formalize the reference natural-language solution into Lean 4."

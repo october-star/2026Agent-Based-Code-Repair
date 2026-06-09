@@ -1,0 +1,4 @@
+strategy:
+  id: "cot_to_lean"
+  backend_method: "cot_then_lean"
+  description: "Problem -> natural-language proof strategy -> Lean 4 formalization."

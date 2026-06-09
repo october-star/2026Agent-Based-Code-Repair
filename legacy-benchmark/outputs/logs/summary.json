@@ -1,0 +1,34 @@
+[
+  {
+    "method": "reference_to_lean",
+    "pass_at_1": 0.0,
+    "compile_rate": 0.0,
+    "no_sorry_rate": 1.0,
+    "extraction_success_rate": 1.0,
+    "main_error": "lean_unavailable"
+  },
+  {
+    "method": "cot_then_lean",
+    "pass_at_1": 0.0,
+    "compile_rate": 0.0,
+    "no_sorry_rate": 1.0,
+    "extraction_success_rate": 1.0,
+    "main_error": "lean_unavailable"
+  },
+  {
+    "method": "direct_lean",
+    "pass_at_1": 0.0,
+    "compile_rate": 0.0,
+    "no_sorry_rate": 1.0,
+    "extraction_success_rate": 1.0,
+    "main_error": "lean_unavailable"
+  },
+  {
+    "method": "mixed_cot_lean",
+    "pass_at_1": 0.0,
+    "compile_rate": 0.0,
+    "no_sorry_rate": 1.0,
+    "extraction_success_rate": 1.0,
+    "main_error": "lean_unavailable"
+  }
+]

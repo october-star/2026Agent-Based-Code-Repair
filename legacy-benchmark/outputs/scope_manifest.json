@@ -1,0 +1,27 @@
+{
+  "project": {
+    "name": "proofbench-pilot",
+    "stage": "step1_scope",
+    "description": "Minimal 10-sample ProofBench pilot before full pipeline scaling."
+  },
+  "dataset": {
+    "name": "ProofBench",
+    "split": "pilot",
+    "sample_limit": 10,
+    "sample_ids": []
+  },
+  "goal": {
+    "task": "generate_lean_verifiable_proofs",
+    "proof_language": "Lean"
+  },
+  "enabled_methods": [
+    "direct_lean",
+    "cot_to_lean",
+    "multi_agent_lean_repair"
+  ],
+  "outputs": {
+    "results_csv": "/Users/octobercity/Desktop/project/2026Agent-Based-Code-Repair/legacy-benchmark/outputs/results.csv",
+    "generations_dir": "/Users/octobercity/Desktop/project/2026Agent-Based-Code-Repair/legacy-benchmark/outputs/generations",
+    "lean_files_dir": "/Users/octobercity/Desktop/project/2026Agent-Based-Code-Repair/legacy-benchmark/outputs/lean_files"
+  }
+}

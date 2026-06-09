@@ -1,0 +1,20 @@
+You are given a mathematical problem and a previous answer that did not produce
+valid extractable Lean code.
+
+Rewrite the answer as Lean 4 code only.
+
+Requirements:
+- output exactly one fenced Lean block
+- do not include any prose before or after the block
+- do not include markdown headings or explanations
+- avoid `sorry` and `admit`
+- do not write comments like "Welcome to the Lean theorem prover"
+- do not invent placeholder definitions, fake inductive types, or unfinished lemmas
+- do not use Lean 3 style imports such as `import data.int.basic` or `import tactic`
+- if the previous answer is unusable, still return your best Lean theorem/proof skeleton
+
+Problem:
+{{problem}}
+
+Previous answer:
+{{raw_generation}}

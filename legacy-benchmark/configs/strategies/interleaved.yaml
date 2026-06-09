@@ -1,0 +1,4 @@
+strategy:
+  id: "interleaved"
+  backend_method: "mixed_cot_lean"
+  description: "Interleave short reasoning with Lean-oriented generation, then output Lean."

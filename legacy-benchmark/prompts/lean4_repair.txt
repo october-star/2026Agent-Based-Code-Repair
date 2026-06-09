@@ -1,0 +1,28 @@
+You are repairing generated Lean code so that it works in a Lean 4 + Mathlib environment.
+
+Rewrite the code below into Lean 4 code that is closer to compiling.
+
+Requirements:
+- output exactly one fenced Lean block
+- use Lean 4 + Mathlib style
+- prefer `import Mathlib` unless a smaller import is clearly sufficient
+- do not use Lean 3 style imports such as `import data.*` or `import tactic`
+- do not use `#rinteractive`
+- do not invent fake helper definitions, fake data structures, or unrelated statements
+- keep the theorem statement faithful to the original problem
+- prioritize fixing the theorem statement before attempting complicated proof steps
+- if the original statement is too hard to prove, return a smaller but still faithful theorem/proof skeleton
+- if you cannot complete the proof, keep the code structurally correct and minimal
+- avoid `sorry` and `admit` if possible, but do not replace them with mathematically unrelated code
+
+Problem:
+{{problem}}
+
+Original generated Lean code:
+{{lean_code}}
+
+Compiler stdout:
+{{stdout}}
+
+Compiler stderr:
+{{stderr}}

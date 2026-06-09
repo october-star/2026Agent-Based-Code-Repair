@@ -1,0 +1,3 @@
+agent:
+  mode: "no_agent"
+  description: "Single-pass generation without extraction repair or Lean4 repair."

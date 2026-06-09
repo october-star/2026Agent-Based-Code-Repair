@@ -1,0 +1,7 @@
+You are given a mathematical proof problem.
+
+Write a concise natural-language proof strategy that would help formalize the
+result in Lean. Focus on the core proof steps and useful lemmas.
+
+Problem:
+{{problem}}

@@ -1,0 +1,4 @@
+strategy:
+  id: "direct_lean"
+  backend_method: "direct_lean"
+  description: "Problem -> Lean 4 formalization directly."
