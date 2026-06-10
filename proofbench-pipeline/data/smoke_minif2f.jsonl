@@ -1,0 +1,1 @@
+{"id":"SMOKE-TRUE","informal_statement":"Prove the proposition True.","formal_statement":"theorem smoke_true : True","reference_solution":"The proposition True is proved by triviality."}

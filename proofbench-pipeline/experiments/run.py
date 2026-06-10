@@ -181,12 +181,19 @@ def main():
     cfg = load_config(args.config)
 
     # ── Dataset ─────────────────────────────────────────────
-    from src.data.loader import load_pilot, load_minif2f
+    from src.data.loader import load_from_jsonl, load_pilot, load_minif2f
+    local_jsonl = cfg["dataset"].get("local_jsonl")
     if args.pilot:
-        problems = load_pilot(n=cfg["dataset"]["pilot_n"])
+        if local_jsonl:
+            problems = load_from_jsonl(local_jsonl)[:cfg["dataset"]["pilot_n"]]
+        else:
+            problems = load_pilot(n=cfg["dataset"]["pilot_n"])
         run_tag = "pilot"
     else:
-        problems = load_minif2f(split=cfg["dataset"]["split"])
+        if local_jsonl:
+            problems = load_from_jsonl(local_jsonl)
+        else:
+            problems = load_minif2f(split=cfg["dataset"]["split"])
         run_tag = "full"
     logger.info(f"Loaded {len(problems)} problems ({run_tag})")
 
@@ -197,6 +204,7 @@ def main():
         lean_bin=lean_cfg["lean_bin"],
         project_dir=lean_cfg.get("project_dir"),
         mock_mode=lean_cfg["mock_mode"],
+        mock_pass_rate=lean_cfg.get("mock_pass_rate", 0.30),
     )
 
     # ── LLM client ───────────────────────────────────────────
@@ -207,6 +215,8 @@ def main():
         base_url=model_cfg.get("base_url"),
         temperature=cfg["inference"]["temperature"],
         max_tokens=cfg["inference"]["max_tokens"],
+        backend=model_cfg.get("backend", "openai"),
+        local_files_only=model_cfg.get("local_files_only", False),
     )
 
     # ── Step 1: Reference formalization ──────────────────────

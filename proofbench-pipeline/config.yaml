@@ -10,9 +10,9 @@ models:
     base_url: null                       # default OpenAI endpoint
 
   deepseek_prover:
-    name: deepseek-prover-v1_5-rl        # check current model name at api.deepseek.com
+    name: deepseek-v4-flash      # check current model name at api.deepseek.com
     api_key: ${DEEPSEEK_API_KEY}         # export DEEPSEEK_API_KEY=...
-    base_url: https://api.deepseek.com/v1
+    base_url: https://api.deepseek.com
 
 # ── Lean 4 executor ──────────────────────────────────────────
 lean:

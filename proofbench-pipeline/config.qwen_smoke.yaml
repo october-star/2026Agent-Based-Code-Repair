@@ -1,0 +1,50 @@
+# ProofBench smoke configuration for Qwen2.5-Coder pipeline wiring.
+# Uses a deterministic mock-Qwen backend by default so it can run offline.
+
+models:
+  qwen2_5_coder:
+    name: qwen2.5-coder-smoke
+    backend: mock_qwen
+    api_key: ""
+    base_url: null
+
+  qwen2_5_coder_local:
+    name: qwen2.5-coder
+    backend: openai
+    api_key: local
+    base_url: http://127.0.0.1:8000/v1
+
+  qwen2_5_coder_transformers:
+    name: Qwen/Qwen2.5-Coder-1.5B-Instruct
+    backend: transformers
+    api_key: ""
+    base_url: null
+    local_files_only: true
+
+lean:
+  lean_bin: lean
+  project_dir: null
+  timeout: 60
+  mock_mode: true
+  mock_pass_rate: 1.0
+
+inference:
+  temperature: 0.0
+  greedy_temperature: 0.0
+  max_tokens: 512
+  K: 1
+
+agent:
+  max_iter: 1
+  repair_temperature: 0.0
+
+dataset:
+  name: smoke
+  split: test
+  pilot_n: 1
+  local_jsonl: data/smoke_minif2f.jsonl
+
+paths:
+  data_dir: data/
+  results_dir: results/
+  formalized_dir: data/formalized/

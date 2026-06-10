@@ -73,7 +73,7 @@ def print_comparison_table(our_rows: List[Dict]):
             beq  = row.get("beq_mean", 0.0)
             gted = row.get("gted_mean", 0.0)
             ar   = row.get("avg_repairs", None)
-            agent_sym = "✓" if "agent" in cond else "✗"
+            agent_sym = "✓" if cond.endswith("_agent") else "✗"
             ar_str = f"{ar:.2f}" if ar is not None else "—"
 
             print(
@@ -106,7 +106,7 @@ def save_csv(our_rows: List[Dict], out_path: str):
         rows.append({
             "system": "ProofBench", "condition": r.get("condition", ""),
             "model": r.get("model", ""),
-            "agent": "agent" in r.get("condition", ""),
+            "agent": r.get("condition", "").endswith("_agent"),
             "pass_at_1":     r.get("pass_at_1", ""),
             "pass_at_32":    r.get("pass_at_32", ""),
             "compile_rate":  r.get("compile_rate", ""),

@@ -1,0 +1,16 @@
+system,condition,model,agent,pass_at_1,pass_at_32,compile_rate,beq_mean,gted_mean,avg_repairs,source
+GPT-4o,Direct,—,False,—,0.23,—,—,—,—,LLM Eval 2026
+DSP-V1.5-RL,non-CoT,—,False,—,0.5,—,—,—,—,Xin 2024
+DSP-V1.5-RL,CoT,—,False,—,0.516,—,—,—,—,Xin 2024
+Goedel-Prover-SFT,Direct,—,False,—,0.576,—,—,—,—,Lin 2025
+APOLLO + Goedel,Direct+repair,—,True,—,0.656,—,—,—,—,Ospanov NeurIPS 2025
+DSP-V2-7B,non-CoT,—,False,—,0.734,—,—,—,—,Ren 2025
+DSP-V2-7B,CoT,—,False,—,0.75,—,—,—,—,Ren 2025
+DSP-V2-671B,CoT,—,False,—,0.824,—,—,—,—,Ren 2025 (SOTA)
+Delta Prover,Reflect+repair,—,True,—,0.959,—,—,—,—,Zhou 2025 (SOTA-agent)
+ProofBench,S1_CoT_noagent,qwen2_5_coder,False,1.0,,1.0,1.0,1.0,,ours
+ProofBench,S1_CoT_agent,qwen2_5_coder,True,1.0,,1.0,1.0,1.0,0.0,ours
+ProofBench,S2_Direct_noagent,qwen2_5_coder,False,1.0,,1.0,1.0,1.0,,ours
+ProofBench,S2_Direct_agent,qwen2_5_coder,True,1.0,,1.0,1.0,1.0,0.0,ours
+ProofBench,S3_Interleaved_noagent,qwen2_5_coder,False,1.0,,1.0,1.0,1.0,,ours
+ProofBench,S3_Interleaved_agent,qwen2_5_coder,True,1.0,,1.0,1.0,1.0,0.0,ours

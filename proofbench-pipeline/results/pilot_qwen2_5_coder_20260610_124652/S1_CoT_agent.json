@@ -1,0 +1,36 @@
+{
+  "condition": "S1_CoT_agent",
+  "metrics": {
+    "pass_at_1": 1.0,
+    "compile_rate": 1.0,
+    "beq_mean": 1.0,
+    "gted_mean": 1.0,
+    "refine_at_5": 1.0,
+    "avg_repairs": 0.0,
+    "error_types": {
+      "syntax": 0.0,
+      "type_mismatch": 0.0,
+      "tactic_failed": 0.0,
+      "timeout": 0.0,
+      "other": 0.0
+    }
+  },
+  "problems": [
+    {
+      "problem_id": "SMOKE-TRUE",
+      "attempts": [
+        {
+          "sample": 0,
+          "success": true,
+          "proof": "theorem smoke_true : True := by\n  trivial",
+          "error_msg": null,
+          "iterations": 1,
+          "history": []
+        }
+      ],
+      "beq": 1.0,
+      "gted": 1.0,
+      "success": true
+    }
+  ]
+}

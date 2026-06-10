@@ -1,0 +1,3 @@
+{
+  "SMOKE-TRUE": "theorem smoke_true : True := by\n  trivial"
+}
