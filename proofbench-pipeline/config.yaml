@@ -1,0 +1,48 @@
+# ProofBench Configuration
+# Copy this to config.local.yaml and fill in your API keys.
+# Never commit config.local.yaml to version control.
+
+# ── Models ───────────────────────────────────────────────────
+models:
+  gpt4o:
+    name: gpt-4o
+    api_key: ${OPENAI_API_KEY}          # export OPENAI_API_KEY=sk-...
+    base_url: null                       # default OpenAI endpoint
+
+  deepseek_prover:
+    name: deepseek-prover-v1_5-rl        # check current model name at api.deepseek.com
+    api_key: ${DEEPSEEK_API_KEY}         # export DEEPSEEK_API_KEY=...
+    base_url: https://api.deepseek.com/v1
+
+# ── Lean 4 executor ──────────────────────────────────────────
+lean:
+  lean_bin: lean                         # path to lean binary
+  project_dir: null                      # path to your Lean 4 + Mathlib project
+                                         # (where `lake exe repl` can be run)
+  timeout: 60                            # seconds per proof attempt
+  mock_mode: true                        # true = no Lean needed (for testing)
+  mock_pass_rate: 0.30                   # simulated pass rate in mock mode
+
+# ── Inference ────────────────────────────────────────────────
+inference:
+  temperature: 0.7                       # for Pass@K sampling
+  greedy_temperature: 0.0               # for Pass@1 (greedy)
+  max_tokens: 4096
+  K: 32                                  # sampling budget (Pass@K)
+
+# ── Agent ────────────────────────────────────────────────────
+agent:
+  max_iter: 5                            # max repair loop iterations
+  repair_temperature: 0.5
+
+# ── Dataset ──────────────────────────────────────────────────
+dataset:
+  name: miniF2F
+  split: test
+  pilot_n: 10                            # number of samples for pilot run
+
+# ── Paths ────────────────────────────────────────────────────
+paths:
+  data_dir: data/
+  results_dir: results/
+  formalized_dir: data/formalized/       # cached ref Lean proofs
